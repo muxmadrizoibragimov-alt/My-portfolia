@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mening Portfolio Saytim</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-main: #e4ebf5;
+            --text-main: #334155;
+            --neu-shadow: 9px 9px 16px rgb(163,177,198,0.6), -9px -9px 16px rgba(255,255,255, 0.5);
+            --neu-inset: inset 3px 3px 7px rgb(163,177,198,0.6), inset -3px -3px 7px rgba(255,255,255, 0.5);
+        }
+        .dark {
+            --bg-main: #0f172a;
+            --text-main: #f8fafc;
+            --neu-shadow: 6px 6px 12px rgba(2, 6, 23, 0.7), -6px -6px 12px rgba(30, 41, 59, 0.7);
+            --neu-inset: inset 3px 3px 6px rgba(2, 6, 23, 0.7), inset -3px -3px 6px rgba(30, 41, 59, 0.7);
+        }
+        body { background-color: var(--bg-main); color: var(--text-main); transition: 0.3s; }
+        .neu-card { background: var(--bg-main); box-shadow: var(--neu-shadow); border-radius: 1.5rem; }
+        .neu-input { background: var(--bg-main); box-shadow: var(--neu-inset); border: none; outline: none; color: var(--text-main); }
+        .neu-input::placeholder { color: #94a3b8; }
+        .neu-btn { background: var(--bg-main); box-shadow: var(--neu-shadow); transition: 0.2s; cursor: pointer; }
+        .neu-btn:active { box-shadow: var(--neu-inset); }
+    </style>
+</head>
+<body class="font-sans selection:bg-indigo-500 selection:text-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full z-40 bg-opacity-85 backdrop-blur-md border-b border-slate-500/10">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img id="navLogo" src="https://via.placeholder.com/40" class="w-10 h-10 rounded-full object-cover border" alt="Logo">
+                <span id="navTitle" class="font-bold text-lg tracking-wide">Portfolio</span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-medium">
+                <a href="#about" class="hover:text-indigo-500 transition">Men haqimda</a>
+                <a href="#services" class="hover:text-indigo-500 transition">Xizmatlar</a>
+                <a href="#calculator" class="hover:text-indigo-500 transition">Kalkulyator</a>
+                <a href="#projects" class="hover:text-indigo-500 transition">Loyihalar</a>
+                <a href="#skills" class="hover:text-indigo-500 transition">Ko'nikmalar</a>
+                <a href="#faq" class="hover:text-indigo-500 transition">FAQ</a>
+                <a href="#contact" class="hover:text-indigo-500 transition">Aloqa</a>
+            </div>
+            <div class="flex items-center space-x-3">
+                <button onclick="toggleTheme()" class="w-10 h-10 rounded-full neu-btn flex items-center justify-center text-indigo-500"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+                <a id="downloadCvBtn" href="#" download="Rezyume.pdf" class="hidden bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-2 rounded-xl text-xs font-medium transition shadow-md"><i class="fa-solid fa-download"></i> CV</a>
+                <a href="#orderWizardSection" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm font-medium transition shadow-lg">Buyurtma berish</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header id="about" class="pt-32 pb-20 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="space-y-6">
+            <span class="inline-block bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 px-3 py-1 rounded-full text-xs font-semibold">Xush kelibsiz!</span>
+            <h1 id="heroTitle" class="text-4xl md:text-6xl font-extrabold tracking-tight">Men Professional Veb Dasturchiman</h1>
+            <p id="heroSubtitle" class="opacity-80 text-lg leading-relaxed">Sizning biznesingiz va g‘oyalaringiz uchun zamonaviy, tezkor va mukammal veb-saytlar yarataman.</p>
+            <div class="flex space-x-4">
+                <a href="#projects" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-6 py-3 rounded-xl transition shadow-md">Ishlarimni ko'rish</a>
+                <a href="#contact" class="neu-btn px-6 py-3 rounded-xl font-medium transition">Bog'lanish</a>
+            </div>
+        </div>
+        <div class="flex justify-center">
+            <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden neu-card p-2">
+                <img id="heroImage" src="https://via.placeholder.com/400" class="w-full h-full object-cover rounded-2xl" alt="Profil Rasmi">
+            </div>
+        </div>
+    </header>
+
+    <!-- SERVICES & PRICING -->
+    <section id="services" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-3">Xizmatlar va Narxlar</h2>
+            <p class="opacity-70">Sizga taklif qiladigan xizmatlarim va ularning narxlari</p>
+        </div>
+        <div id="servicesContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- PRICE CALCULATOR -->
+    <section id="calculator" class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="neu-card p-8 space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-2">🧮 Narx Kalkulyatori</h2>
+                <p class="opacity-70 text-xs">O'zingizga kerakli xizmatlarni tanlang va taxminiy narxni hisoblang</p>
+            </div>
+            <div id="calcCheckboxes" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            <div class="border-t border-slate-500/20 pt-4 flex justify-between items-center">
+                <span class="font-bold text-lg">Umumiy narx:</span>
+                <span id="calcTotal" class="text-2xl font-extrabold text-indigo-500">0 so'm</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS WITH CATEGORY FILTERS & LIVE PREVIEW MODAL -->
+    <section id="projects" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-3">Qilgan Ishlarim</h2>
+            <p class="opacity-70">So‘nggi bajargan loyihalarim bilan tanishing</p>
+        </div>
+        <div class="flex justify-center flex-wrap gap-3 mb-12">
+            <button onclick="filterProjects('all')" class="neu-btn px-5 py-2 rounded-xl text-sm font-medium bg-indigo-600 text-white shadow-md">Barchasi</button>
+            <button onclick="filterProjects('Landing Page')" class="neu-btn px-5 py-2 rounded-xl text-sm font-medium">Landing Page</button>
+            <button onclick="filterProjects('Portfolio')" class="neu-btn px-5 py-2 rounded-xl text-sm font-medium">Portfolio</button>
+            <button onclick="filterProjects('Telegram Bot')" class="neu-btn px-5 py-2 rounded-xl text-sm font-medium">Telegram Bot</button>
+            <button onclick="filterProjects('Internet Do\'kon')" class="neu-btn px-5 py-2 rounded-xl text-sm font-medium">Internet Do'kon</button>
+        </div>
+        <div id="projectsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- INTERACTIVE SKILLS -->
+    <section id="skills" class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-3">Ko'nikmalar va Texnologiyalar</h2>
+            <p class="opacity-70">Bilgan dasturlash tillarim va darajam</p>
+        </div>
+        <div class="neu-card p-8 grid grid-cols-1 md:grid-cols-2 gap-6" id="skillsContainer"></div>
+    </section>
+
+    <!-- STEP-BY-STEP ORDER WIZARD -->
+    <section id="orderWizardSection" class="py-16 px-6 max-w-3xl mx-auto">
+        <div class="neu-card p-8 space-y-6">
+            <div class="text-center">
+                <h2 class="text-2xl font-bold mb-2">🚀 Bosqichma-bosqich Buyurtma Berish</h2>
+                <p class="opacity-70 text-xs">Loyihangizni bir necha qadamda tez va oson rasmiylashtiring</p>
+            </div>
+            <div id="wizardStepContainer" class="space-y-4"></div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-16 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-10">
+            <h2 class="text-3xl font-bold mb-3">Ko'p Beriladigan Savollar (FAQ)</h2>
+            <p class="opacity-70">Mijozlarimizdan kelib tushadigan asosiy savollar va javoblar</p>
+        </div>
+        <div id="faqContainer" class="space-y-4"></div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-3">Mijozlarimiz Nima Deyishadi?</h2>
+            <p class="opacity-70">Biz bilan ishlagan insonlarning samimiy fikrlari</p>
+        </div>
+        <div id="testimonialsContainer" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </section>
+
+    <!-- CONTACT & CHAT -->
+    <section id="contact" class="py-20 px-6 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div class="space-y-6">
+            <h2 class="text-3xl font-bold">Bog‘lanish</h2>
+            <p class="opacity-70">Savollaringiz bormi yoki loyiha boshlamoqchimisiz? Menga yozing yoki quyidagi ma'lumotlar orqali bog‘laning.</p>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-4 neu-card p-4 rounded-xl">
+                    <i class="fa-solid fa-phone text-indigo-500 text-xl"></i>
+                    <div>
+                        <div class="text-xs opacity-60">Telefon raqam</div>
+                        <div id="contactPhone" class="font-medium">+998 90 123 45 67</div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 neu-card p-4 rounded-xl">
+                    <i class="fa-brands fa-telegram text-indigo-500 text-xl"></i>
+                    <div>
+                        <div class="text-xs opacity-60">Telegram</div>
+                        <a id="contactTelegram" href="#" target="_blank" class="font-medium hover:text-indigo-500">@username</a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 neu-card p-4 rounded-xl">
+                    <i class="fa-brands fa-instagram text-indigo-500 text-xl"></i>
+                    <div>
+                        <div class="text-xs opacity-60">Instagram</div>
+                        <a id="contactInstagram" href="#" target="_blank" class="font-medium hover:text-indigo-500">@instagram_username</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Chatbot -->
+        <div class="neu-card p-6 flex flex-col h-[560px]">
+            <div class="flex items-center space-x-3 pb-3 border-b border-slate-500/20">
+                <div class="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                <h3 class="font-bold">AI Yordamchi & Chat</h3>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-2 mt-3">
+                <input type="text" id="clientPhone" placeholder="Telefon raqamingiz..." class="neu-input px-3 py-2 rounded-xl text-xs font-medium">
+                <input type="text" id="clientTelegram" placeholder="Telegram username..." class="neu-input px-3 py-2 rounded-xl text-xs font-medium">
+            </div>
+
+            <div id="chatMessages" class="flex-1 overflow-y-auto py-4 space-y-3 text-sm"></div>
+            
+            <div class="flex space-x-2 pt-2 border-t border-slate-500/20">
+                <input type="text" id="chatInput" placeholder="Xabaringizni yozing..." class="flex-1 neu-input px-4 py-2 text-sm font-medium">
+                <button onclick="sendChatMessage()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition shadow-md"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE PREVIEW MODAL -->
+    <div id="previewModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4">
+        <div class="neu-card p-6 w-full max-w-2xl bg-slate-900 text-slate-100 space-y-4 relative">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+                <h3 id="previewTitle" class="text-lg font-bold">Loyiha Nomi</h3>
+                <button onclick="closePreviewModal()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <img id="previewImage" src="" class="w-full h-72 object-cover rounded-xl" alt="Loyiha rasmi">
+            <div class="flex justify-end pt-2">
+                <a id="previewLink" href="#" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2 rounded-xl text-sm transition">Saytga o'tish <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-slate-500/20 text-center text-sm opacity-60 relative">
+        <p>&copy; 2026 Barcha huquqlar himoyalangan.</p>
+        <span onclick="openAdminModal()" class="absolute right-4 bottom-4 w-3 h-3 bg-slate-400/50 rounded-full cursor-pointer hover:bg-indigo-500 transition" title="Admin"></span>
+    </footer>
+
+    <!-- ADMIN LOGIN MODAL -->
+    <div id="loginModal" class="hidden fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="neu-card p-8 w-full max-w-sm space-y-5">
+            <h3 class="text-xl font-bold text-center">Admin Panelga Kirish</h3>
+            <p class="text-xs opacity-70 text-center">Maxfiy parolni kiriting</p>
+            <input type="password" id="adminPasswordInput" placeholder="••••••••" class="w-full neu-input px-4 py-3 text-sm rounded-xl text-center">
+            <div class="flex space-x-3 pt-2">
+                <button onclick="checkAdminPassword()" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white py-3 rounded-xl text-sm font-medium transition shadow-md">Kirish</button>
+                <button onclick="closeLoginModal()" class="flex-1 neu-btn py-3 rounded-xl text-sm font-medium transition">Yopish</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD MODAL -->
+    <div id="adminModal" class="hidden fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md overflow-y-auto p-4 md:p-10">
+        <div class="neu-card max-w-4xl mx-auto p-6 md:p-8 space-y-8 bg-slate-900 text-slate-100">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <h2 class="text-2xl font-bold text-indigo-400">Boshqaruv Paneli (Admin - Firebase)</h2>
+                <button onclick="closeAdminModal()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <!-- Chat yozishmalari -->
+            <div class="space-y-4 bg-slate-950/50 p-4 rounded-2xl border border-slate-800">
+                <h3 class="font-bold text-lg text-indigo-300">💬 Chatbot Yozishmalari va Mijozlar</h3>
+                <div id="adminChatMessagesList" class="space-y-2 max-h-60 overflow-y-auto"></div>
+            </div>
+
+            <!-- Chatbot Salomlashish Matnini Sozlash -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">🤖 Chatbot Birinchi Salomlashish Xabarini Sozlash</h3>
+                <textarea id="editBotWelcome" rows="3" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-sm text-slate-100" placeholder="Chatbotning birinchi xabarini yozing..."></textarea>
+            </div>
+
+            <!-- Asosiy Ma'lumotlar va PDF CV -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">1. Umumiy Ma'lumotlar, Rasmlar va PDF Rezyume</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-xs text-slate-400">Sayt Nomi</label>
+                        <input type="text" id="editTitle" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">PDF Rezyume (Fayl yuklash)</label>
+                        <input type="file" id="editCvFile" accept=".pdf" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">Profil Rasmi</label>
+                        <input type="file" id="editHeroImageFile" accept="image/*" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">Logotip</label>
+                        <input type="file" id="editLogoFile" accept="image/*" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">Telefon</label>
+                        <input type="text" id="editPhone" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">Telegram</label>
+                        <input type="text" id="editTelegram" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm mt-1 text-slate-100">
+                    </div>
+                    <div>
+                        <label class="text-xs text-slate-400">Instagram</label>
+                        <input type="text" id="editInstagram" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm mt-1 text-slate-100">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Xizmatlar va Kalkulyator uchun narxlar -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">2. Xizmat va Narxlar Qo'shish (Kalkulyator uchun)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input type="text" id="serviceName" placeholder="Xizmat nomi" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="number" id="servicePriceNum" placeholder="Faqat raqam (masalan: 700000)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="file" id="serviceImageFile" accept="image/*" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm text-slate-100">
+                </div>
+                <button onclick="addService()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">Xizmat qo'shish</button>
+                <div id="adminServicesList" class="space-y-2"></div>
+            </div>
+
+            <!-- Loyihalar va Toifalar -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">3. Loyiha va Toifa Qo'shish</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <input type="text" id="projectName" placeholder="Loyiha nomi" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <select id="projectCategory" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="Portfolio">Portfolio</option>
+                        <option value="Telegram Bot">Telegram Bot</option>
+                        <option value="Internet Do'kon">Internet Do'kon</option>
+                    </select>
+                    <input type="text" id="projectLink" placeholder="Havola (Link)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="file" id="projectImageFile" accept="image/*" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm text-slate-100">
+                </div>
+                <button onclick="addProject()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">Loyiha qo'shish</button>
+                <div id="adminProjectsList" class="space-y-2"></div>
+            </div>
+
+            <!-- Ko'nikmalar (Skills) -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">4. Ko'nikmalar Qo'shish (Skills)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="skillName" placeholder="Texnologiya (masalan: React.js)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="number" id="skillPercent" placeholder="Foizda daraja (masalan: 90)" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                </div>
+                <button onclick="addSkill()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">Ko'nikma qo'shish</button>
+                <div id="adminSkillsList" class="space-y-2"></div>
+            </div>
+
+            <!-- FAQ Qo'shish -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">5. FAQ (Savol-Javob) Qo'shish</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="faqQ" placeholder="Savol" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="text" id="faqA" placeholder="Javob" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                </div>
+                <button onclick="addFaq()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">FAQ qo'shish</button>
+                <div id="adminFaqList" class="space-y-2"></div>
+            </div>
+
+            <!-- Mijozlar Fikri -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">6. Mijozlar Fikrini Qo'shish</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <input type="text" id="testiName" placeholder="Mijoz ismi" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="text" id="testiText" placeholder="Fikr matni" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="file" id="testiImageFile" accept="image/*" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-1 text-sm text-slate-100">
+                </div>
+                <button onclick="addTestimonial()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">Fikr qo'shish</button>
+                <div id="adminTestimonialsList" class="space-y-2"></div>
+            </div>
+
+            <!-- AI Qoidalar -->
+            <div class="space-y-4 border-t border-slate-800 pt-6">
+                <h3 class="font-bold text-lg">7. AI Avto-javob Qoidalari</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <input type="text" id="aiKeyword" placeholder="Kalit so'z" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                    <input type="text" id="aiReply" placeholder="Avto-javob matni" class="bg-slate-950 border border-slate-800 rounded-xl px-4 py-2 text-sm text-slate-100">
+                </div>
+                <button onclick="addAiRule()" class="bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-2 rounded-xl text-sm transition">Qoida qo'shish</button>
+                <div id="adminAiRulesList" class="space-y-2"></div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-6 flex justify-end">
+                <button onclick="saveAllSettings()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-3 rounded-xl font-medium transition shadow-lg">O'zgarishlarni Bazaga Saqlash</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE & JAVASCRIPT LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/13.0.0/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBdci5kzXSZt_RHQc7EhGncaHEREdL8rJs",
+            authDomain: "my-portfolia-3dec6.firebaseapp.com",
+            databaseURL: "https://my-portfolia-3dec6-default-rtdb.firebaseio.com",
+            projectId: "my-portfolia-3dec6",
+            storageBucket: "my-portfolia-3dec6.firebasestorage.app",
+            messagingSenderId: "26518664842",
+            appId: "1:26518664842:web:95450a5d768e075df89f73",
+            measurementId: "G-ZK3X3320HM"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+
+        let siteData = {
+            title: "Men Professional Veb Dasturchiman",
+            subtitle: "Sizning biznesingiz va g‘oyalaringiz uchun zamonaviy, tezkor va mukammal veb-saytlar yarataman.",
+            phone: "+998 90 123 45 67",
+            telegram: "username",
+            instagram: "instagram_username",
+            heroImage: "https://via.placeholder.com/400",
+            logo: "https://via.placeholder.com/40",
+            cvFile: "",
+            botWelcome: "Salom! Bizda Portfolio website, Landing page va Telegram bot kabi xizmatlar bor. Qaysi biri kerak?",
+            services: [{ name: "Portfolio Veb-sayt", price: "700,000 so'm", priceNum: 700000, image: "https://via.placeholder.com/300" }],
+            projects: [{ name: "Bibixonim o'quv markazi", category: "Portfolio", link: "#", image: "https://via.placeholder.com/400" }],
+            skills: [{ name: "HTML / CSS", percent: 95 }, { name: "JavaScript", percent: 85 }],
+            faq: [{ q: "Buyurtma necha kunda tayyor bo'ladi?", a: "Odatda loyiha murakkabligiga qarab 3-7 kunda tayyor bo'ladi." }],
+            testimonials: [{ name: "Anvar aka", text: "Rahmat uka, endi senga hamma vebsaytlarimni qildiraman!", image: "https://via.placeholder.com/150" }],
+            aiRules: [{ keyword: "narx", reply: "Portfolio va boshqa veb-saytlar narxlari 700,000 so'mdan boshlanadi!" }],
+            clientMessages: []
+        };
+
+        const dbRef = ref(db);
+        get(child(dbRef, "portfolio")).then((snapshot) => {
+            if (snapshot.exists()) {
+                siteData = snapshot.val();
+                if(!siteData.clientMessages) siteData.clientMessages = [];
+            }
+            renderSite();
+        }).catch((error) => {
+            console.error("Bazadan o'qish xatosi:", error);
+            renderSite();
+        });
+
+        // Rejimni boshqarish
+        if(localStorage.getItem('theme') === 'dark') {
+            document.documentElement.classList.add('dark');
+            document.getElementById('themeIcon').className = "fa-solid fa-sun";
+        }
+
+        window.toggleTheme = function() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('themeIcon');
+            if(document.documentElement.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun";
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = "fa-solid fa-moon";
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        let currentWizardStep = 1;
+        let orderData = { service: '', name: '', phone: '' };
+
+        window.renderSite = function() {
+            document.getElementById('navTitle').innerText = (siteData.title || "").split(' ')[0] + "...";
+            document.getElementById('navLogo').src = siteData.logo;
+            document.getElementById('heroTitle').innerText = siteData.title;
+            document.getElementById('heroSubtitle').innerText = siteData.subtitle;
+            document.getElementById('heroImage').src = siteData.heroImage;
+            
+            document.getElementById('contactPhone').innerText = siteData.phone;
+            document.getElementById('contactTelegram').innerText = "@" + siteData.telegram;
+            document.getElementById('contactTelegram').href = "https://t.me/" + siteData.telegram;
+            document.getElementById('contactInstagram').innerText = "@" + siteData.instagram;
+            document.getElementById('contactInstagram').href = "https://instagram.com/" + siteData.instagram;
+
+            const cvBtn = document.getElementById('downloadCvBtn');
+            if(siteData.cvFile) {
+                cvBtn.href = siteData.cvFile;
+                cvBtn.classList.remove('hidden');
+            } else {
+                cvBtn.classList.add('hidden');
+            }
+
+            let servicesHTML = "";
+            (siteData.services || []).forEach((s) => {
+                servicesHTML += `
+                    <div class="neu-card p-4 overflow-hidden">
+                        <img src="${s.image}" class="w-full h-48 object-cover rounded-2xl mb-4" alt="Xizmat">
+                        <div class="space-y-2">
+                            <h3 class="font-bold text-xl">${s.name}</h3>
+                            <div class="text-indigo-500 font-bold text-lg">${s.price}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('servicesContainer').innerHTML = servicesHTML;
+
+            let calcHTML = "";
+            (siteData.services || []).forEach((s) => {
+                calcHTML += `
+                    <label class="flex items-center space-x-3 neu-input p-3 rounded-xl cursor-pointer">
+                        <input type="checkbox" value="${s.priceNum || 0}" onchange="calculateTotal()" class="calc-check w-4 h-4 accent-indigo-600">
+                        <span class="text-sm font-medium">${s.name} (${s.price})</span>
+                    </label>
+                `;
+            });
+            document.getElementById('calcCheckboxes').innerHTML = calcHTML;
+            calculateTotal();
+
+            filterProjects('all');
+
+            let skillsHTML = "";
+            (siteData.skills || []).forEach((sk) => {
+                skillsHTML += `
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-sm font-semibold">
+                            <span>${sk.name}</span>
+                            <span>${sk.percent}%</span>
+                        </div>
+                        <div class="w-full bg-slate-500/20 rounded-full h-3 overflow-hidden">
+                            <div class="bg-indigo-600 h-full rounded-full" style="width: ${sk.percent}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            document.getElementById('skillsContainer').innerHTML = skillsHTML;
+
+            let faqHTML = "";
+            (siteData.faq || []).forEach((f, idx) => {
+                faqHTML += `
+                    <div class="neu-card p-4 rounded-xl space-y-2">
+                        <div class="font-bold text-sm flex justify-between items-center cursor-pointer" onclick="toggleFaq(${idx})">
+                            <span>${f.q}</span>
+                            <i class="fa-solid fa-chevron-down text-indigo-500" id="faqIcon-${idx}"></i>
+                        </div>
+                        <div id="faqAns-${idx}" class="hidden text-xs opacity-70 pt-2 border-t border-slate-500/10">${f.a}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('faqContainer').innerHTML = faqHTML;
+
+            let testiHTML = "";
+            (siteData.testimonials || []).forEach((t) => {
+                testiHTML += `
+                    <div class="neu-card p-6 space-y-4">
+                        <div class="flex items-center space-x-4">
+                            <img src="${t.image}" class="w-14 h-14 rounded-full object-cover border" alt="Mijoz">
+                            <div>
+                                <h4 class="font-bold">${t.name}</h4>
+                                <div class="text-xs text-emerald-500">Mijoz</div>
+                            </div>
+                        </div>
+                        <p class="text-sm italic opacity-85">"${t.text}"</p>
+                    </div>
+                `;
+            });
+            document.getElementById('testimonialsContainer').innerHTML = testiHTML;
+
+            renderWizardStep();
+            initChatBot();
+        };
+
+        window.toggleFaq = function(idx) {
+            const ans = document.getElementById(`faqAns-${idx}`);
+            ans.classList.toggle('hidden');
+        };
+
+        window.renderWizardStep = function() {
+            const container = document.getElementById('wizardStepContainer');
+            if(currentWizardStep === 1) {
+                let options = "";
+                (siteData.services || []).forEach(s => {
+                    options += `<label class="flex items-center space-x-3 neu-input p-3 rounded-xl cursor-pointer">
+                        <input type="radio" name="wizardService" value="${s.name}" class="accent-indigo-600" ${orderData.service === s.name ? 'checked' : ''}>
+                        <span class="text-sm">${s.name} (${s.price})</span>
+                    </label>`;
+                });
+                container.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="text-sm font-bold text-indigo-500">1-qadam: Xizmat turini tanlang</div>
+                        <div class="space-y-2">${options || '<p class="text-xs opacity-60">Hozircha xizmatlar yo\'q</p>'}</div>
+                        <div class="flex justify-end pt-2"><button onclick="nextWizard(1)" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-xs font-medium">Keyingisi &rarr;</button></div>
+                    </div>
+                `;
+            } else if(currentWizardStep === 2) {
+                container.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="text-sm font-bold text-indigo-500">2-qadam: Aloqa ma'lumotlaringizni kiriting</div>
+                        <input type="text" id="wizName" value="${orderData.name}" placeholder="Ismingiz..." class="w-full neu-input p-3 rounded-xl text-sm">
+                        <input type="text" id="wizPhone" value="${orderData.phone}" placeholder="Telefon raqamingiz (+998...)" class="w-full neu-input p-3 rounded-xl text-sm">
+                        <div class="flex justify-between pt-2">
+                            <button onclick="currentWizardStep=1; renderWizardStep();" class="neu-btn px-5 py-2 rounded-xl text-xs">&larr; Orqaga</button>
+                            <button onclick="nextWizard(2)" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-xs font-medium">Yuborish</button>
+                        </div>
+                    </div>
+                `;
+            } else if(currentWizardStep === 3) {
+                container.innerHTML = `
+                    <div class="text-center space-y-3 py-6">
+                        <i class="fa-solid fa-circle-check text-emerald-500 text-4xl"></i>
+                        <h3 class="font-bold text-lg">Buyurtmangiz qabul qilindi!</h3>
+                        <p class="text-xs opacity-70">Tez orada siz bilan bog'lanamiz.</p>
+                        <button onclick="currentWizardStep=1; orderData={service:'',name:'',phone:''}; renderWizardStep();" class="bg-indigo-600 text-white px-5 py-2 rounded-xl text-xs">Yangi buyurtma</button>
+                    </div>
+                `;
+            }
+        };
+
+        window.nextWizard = function(step) {
+            if(step === 1) {
+                const selected = document.querySelector('input[name="wizardService"]:checked');
+                if(!selected) return alert('Iltimos, xizmat turini tanlang!');
+                orderData.service = selected.value;
+                currentWizardStep = 2;
+                renderWizardStep();
+            } else if(step === 2) {
+                const name = document.getElementById('wizName').value.trim();
+                const phone = document.getElementById('wizPhone').value.trim();
+                if(!name || !phone) return alert('Barcha maydonlarni to\'ldiring!');
+                orderData.name = name;
+                orderData.phone = phone;
+
+                if(!siteData.clientMessages) siteData.clientMessages = [];
+                siteData.clientMessages.push({
+                    clientText: `[Buyurtma] Xizmat: ${orderData.service}`,
+                    botReply: `Mijoz tomonidan buyurtma berildi (Ism: ${name}, Tel: ${phone})`,
+                    phone: phone,
+                    tg: 'Buyurtma orqali',
+                    date: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+                });
+
+                set(ref(db, 'portfolio'), siteData).then(() => {
+                    currentWizardStep = 3;
+                    renderWizardStep();
+                });
+            }
+        };
+
+        window.openPreviewModal = function(name, image, link) {
+            document.getElementById('previewTitle').innerText = name;
+            document.getElementById('previewImage').src = image;
+            const linkBtn = document.getElementById('previewLink');
+            if(link && link !== '#') {
+                linkBtn.href = link;
+                linkBtn.classList.remove('hidden');
+            } else {
+                linkBtn.classList.add('hidden');
+            }
+            document.getElementById('previewModal').classList.remove('hidden');
+        };
+        window.closePreviewModal = function() { document.getElementById('previewModal').classList.add('hidden'); };
+
+        window.filterProjects = function(category) {
+            let projectsHTML = "";
+            (siteData.projects || []).forEach((p) => {
+                if(category === 'all' || p.category === category) {
+                    const safeName = p.name.replace(/'/g, "\\'");
+                    const safeImage = p.image.replace(/'/g, "\\'");
+                    const safeLink = (p.link || '#').replace(/'/g, "\\'");
+                    projectsHTML += `
+                        <div class="neu-card p-4 overflow-hidden group cursor-pointer" onclick="openPreviewModal('${safeName}', '${safeImage}', '${safeLink}')">
+                            <img src="${p.image}" class="w-full h-48 object-cover rounded-2xl group-hover:scale-105 transition duration-500 mb-4" alt="Loyiha">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h4 class="font-bold">${p.name}</h4>
+                                    <span class="text-xs text-indigo-500 bg-indigo-500/10 px-2 py-0.5 rounded-full">${p.category || 'Portfolio'}</span>
+                                </div>
+                                <span class="text-indigo-500 text-xs hover:underline">Ko'rish <i class="fa-solid fa-eye"></i></span>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            document.getElementById('projectsContainer').innerHTML = projectsHTML || `<p class="text-center col-span-3 opacity-70 text-sm">Bu bo'limda loyihalar yo'q.</p>`;
+        };
+
+        window.calculateTotal = function() {
+            let total = 0;
+            document.querySelectorAll('.calc-check:checked').forEach(cb => {
+                total += Number(cb.value);
+            });
+            document.getElementById('calcTotal').innerText = total.toLocaleString() + " so'm";
+        };
+
+        window.initChatBot = function() {
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="neu-card p-3 rounded-2xl max-w-[85%] text-xs space-y-1">
+                    <p>${siteData.botWelcome}</p>
+                </div>
+            `;
+        };
+
+        function convertFileToBase64(fileInput, callback) {
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) { callback(e.target.result); };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else { callback(null); }
+        }
+
+        window.openAdminModal = function() { document.getElementById('loginModal').classList.remove('hidden'); };
+        window.closeLoginModal = function() { document.getElementById('loginModal').classList.add('hidden'); };
+        window.checkAdminPassword = function() {
+            const pass = document.getElementById('adminPasswordInput').value;
+            if (pass === 'admin123') {
+                closeLoginModal();
+                document.getElementById('adminPasswordInput').value = '';
+                document.getElementById('adminModal').classList.remove('hidden');
+                loadAdminData();
+            } else { alert('Parol noto‘g‘ri!'); }
+        };
+        window.closeAdminModal = function() { document.getElementById('adminModal').classList.add('hidden'); };
+
+        window.loadAdminData = function() {
+            document.getElementById('editTitle').value = siteData.title || "";
+            document.getElementById('editPhone').value = siteData.phone || "";
+            document.getElementById('editTelegram').value = siteData.telegram || "";
+            document.getElementById('editInstagram').value = siteData.instagram || "";
+            document.getElementById('editBotWelcome').value = siteData.botWelcome || "";
+            renderAdminLists();
+        };
+
+        window.renderAdminLists = function() {
+            let cList = "";
+            if(!siteData.clientMessages || siteData.clientMessages.length === 0) {
+                cList = `<p class="text-xs opacity-60">Hozircha yozishmalar yo'q.</p>`;
+            } else {
+                siteData.clientMessages.forEach((m, i) => {
+                    cList += `<div class="bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm space-y-1">
+                        <div class="flex justify-between text-xs text-indigo-400">
+                            <span><b>Tel:</b> ${m.phone || 'Yo\'q'} | <b>TG:</b> @${m.tg || 'Yo\'q'} (${m.date})</span>
+                            <button onclick="deleteClientMessage(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                        <div>👤 <b>Mijoz:</b> ${m.clientText}</div>
+                        <div>🤖 <b>Bot javobi:</b> ${m.botReply}</div>
+                    </div>`;
+                });
+            }
+            document.getElementById('adminChatMessagesList').innerHTML = cList;
+
+            let sList = "";
+            (siteData.services || []).forEach((s, i) => {
+                sList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span>${s.name} - ${s.price}</span>
+                    <button onclick="deleteService(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminServicesList').innerHTML = sList;
+
+            let pList = "";
+            (siteData.projects || []).forEach((p, i) => {
+                pList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span>${p.name} (${p.category})</span>
+                    <button onclick="deleteProject(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminProjectsList').innerHTML = pList;
+
+            let skList = "";
+            (siteData.skills || []).forEach((sk, i) => {
+                skList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span>${sk.name} - ${sk.percent}%</span>
+                    <button onclick="deleteSkill(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminSkillsList').innerHTML = skList;
+
+            let fList = "";
+            (siteData.faq || []).forEach((f, i) => {
+                fList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span><b>S:</b> ${f.q}</span>
+                    <button onclick="deleteFaq(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminFaqList').innerHTML = fList;
+
+            let tList = "";
+            (siteData.testimonials || []).forEach((t, i) => {
+                tList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span>${t.name}: "${t.text}"</span>
+                    <button onclick="deleteTestimonial(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminTestimonialsList').innerHTML = tList;
+
+            let aList = "";
+            (siteData.aiRules || []).forEach((r, i) => {
+                aList += `<div class="flex justify-between items-center bg-slate-900 p-3 rounded-xl border border-slate-800 text-sm">
+                    <span>[${r.keyword}] -> ${r.reply}</span>
+                    <button onclick="deleteAiRule(${i})" class="text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                </div>`;
+            });
+            document.getElementById('adminAiRulesList').innerHTML = aList;
+        };
+
+        window.addService = function() {
+            const name = document.getElementById('serviceName').value;
+            const priceNum = Number(document.getElementById('servicePriceNum').value);
+            const fileInput = document.getElementById('serviceImageFile');
+            if(!name || !priceNum) return alert('Maydonlarni to‘ldiring');
+            const price = priceNum.toLocaleString() + " so'm";
+            convertFileToBase64(fileInput, (img) => {
+                if(!siteData.services) siteData.services = [];
+                siteData.services.push({ name, price, priceNum, image: img || 'https://via.placeholder.com/300' });
+                document.getElementById('serviceName').value = '';
+                document.getElementById('servicePriceNum').value = '';
+                renderAdminLists();
+            });
+        };
+        window.deleteService = function(i) { siteData.services.splice(i, 1); renderAdminLists(); };
+
+        window.addProject = function() {
+            const name = document.getElementById('projectName').value;
+            const category = document.getElementById('projectCategory').value;
+            const link = document.getElementById('projectLink').value;
+            const fileInput = document.getElementById('projectImageFile');
+            if(!name) return alert('Loyiha nomini kiriting');
+            convertFileToBase64(fileInput, (img) => {
+                if(!siteData.projects) siteData.projects = [];
+                siteData.projects.push({ name, category, link: link || '#', image: img || 'https://via.placeholder.com/400' });
+                document.getElementById('projectName').value = '';
+                document.getElementById('projectLink').value = '';
+                renderAdminLists();
+            });
+        };
+        window.deleteProject = function(i) { siteData.projects.splice(i, 1); renderAdminLists(); };
+
+        window.addSkill = function() {
+            const name = document.getElementById('skillName').value;
+            const percent = Number(document.getElementById('skillPercent').value);
+            if(!name || !percent) return alert('Maydonlarni to‘ldiring');
+            if(!siteData.skills) siteData.skills = [];
+            siteData.skills.push({ name, percent });
+            document.getElementById('skillName').value = '';
+            document.getElementById('skillPercent').value = '';
+            renderAdminLists();
+        };
+        window.deleteSkill = function(i) { siteData.skills.splice(i, 1); renderAdminLists(); };
+
+        window.addFaq = function() {
+            const q = document.getElementById('faqQ').value;
+            const a = document.getElementById('faqA').value;
+            if(!q || !a) return alert('Savol va javobni kiriting');
+            if(!siteData.faq) siteData.faq = [];
+            siteData.faq.push({ q, a });
+            document.getElementById('faqQ').value = '';
+            document.getElementById('faqA').value = '';
+            renderAdminLists();
+        };
+        window.deleteFaq = function(i) { siteData.faq.splice(i, 1); renderAdminLists(); };
+
+        window.addTestimonial = function() {
+            const name = document.getElementById('testiName').value;
+            const text = document.getElementById('testiText').value;
+            const fileInput = document.getElementById('testiImageFile');
+            if(!name || !text) return alert('Maydonlarni to‘ldiring');
+            convertFileToBase64(fileInput, (img) => {
+                if(!siteData.testimonials) siteData.testimonials = [];
+                siteData.testimonials.push({ name, text, image: img || 'https://via.placeholder.com/150' });
+                document.getElementById('testiName').value = '';
+                document.getElementById('testiText').value = '';
+                renderAdminLists();
+            });
+        };
+        window.deleteTestimonial = function(i) { siteData.testimonials.splice(i, 1); renderAdminLists(); };
+
+        window.addAiRule = function() {
+            const keyword = document.getElementById('aiKeyword').value.toLowerCase();
+            const reply = document.getElementById('aiReply').value;
+            if(!keyword || !reply) return alert('Qoida maydonlarini to‘ldiring');
+            if(!siteData.aiRules) siteData.aiRules = [];
+            siteData.aiRules.push({ keyword, reply });
+            document.getElementById('aiKeyword').value = '';
+            document.getElementById('aiReply').value = '';
+            renderAdminLists();
+        };
+        window.deleteAiRule = function(i) { siteData.aiRules.splice(i, 1); renderAdminLists(); };
+
+        window.deleteClientMessage = function(i) { 
+            siteData.clientMessages.splice(i, 1); 
+            set(ref(db, 'portfolio'), siteData).then(() => {
+                renderAdminLists();
+            });
+        };
+
+        window.saveAllSettings = function() {
+            siteData.title = document.getElementById('editTitle').value;
+            siteData.phone = document.getElementById('editPhone').value;
+            siteData.telegram = document.getElementById('editTelegram').value;
+            siteData.instagram = document.getElementById('editInstagram').value;
+            siteData.botWelcome = document.getElementById('editBotWelcome').value;
+
+            const heroFile = document.getElementById('editHeroImageFile');
+            const logoFile = document.getElementById('editLogoFile');
+            const cvFileInput = document.getElementById('editCvFile');
+
+            let pending = 3;
+            function check() {
+                pending--;
+                if(pending === 0) {
+                    set(ref(db, 'portfolio'), siteData).then(() => {
+                        renderSite();
+                        closeAdminModal();
+                        alert('Barcha ma\'lumotlar Firebase bazasiga muvaffaqiyatli saqlandi!');
+                    }).catch(err => {
+                        alert('Saqlashda xatolik yuz berdi: ' + err.message);
+                    });
+                }
+            }
+            convertFileToBase64(heroFile, (img) => { if(img) siteData.heroImage = img; check(); });
+            convertFileToBase64(logoFile, (img) => { if(img) siteData.logo = img; check(); });
+            convertFileToBase64(cvFileInput, (fileBase64) => { if(fileBase64) siteData.cvFile = fileBase64; check(); });
+        };
+
+        window.sendChatMessage = function() {
+            const inputField = document.getElementById('chatInput');
+            const message = inputField.value.trim();
+            const clientPhone = document.getElementById('clientPhone').value.trim();
+            const clientTelegram = document.getElementById('clientTelegram').value.trim();
+            
+            if(!message) return;
+
+            const chatContainer = document.getElementById('chatMessages');
+            chatContainer.innerHTML += `<div class="bg-indigo-600 text-white p-3 rounded-2xl max-w-[80%] ml-auto">${message}</div>`;
+            inputField.value = '';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            setTimeout(() => {
+                let reply = "Xabaringiz qabul qilindi! Tez orada bog'lanamiz.";
+                const lower = message.toLowerCase();
+                for(let r of (siteData.aiRules || [])) {
+                    if(lower.includes(r.keyword)) {
+                        reply = r.reply;
+                        break;
+                    }
+                }
+
+                chatContainer.innerHTML += `<div class="neu-card p-3 rounded-2xl max-w-[80%] text-xs">${reply}</div>`;
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+
+                const timeNow = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                if(!siteData.clientMessages) siteData.clientMessages = [];
+                siteData.clientMessages.push({ 
+                    clientText: message, 
+                    botReply: reply, 
+                    phone: clientPhone, 
+                    tg: clientTelegram, 
+                    date: timeNow 
+                });
+
+                set(ref(db, 'portfolio'), siteData);
+            }, 500);
+        };
+    </script>
+</body>
+              </html>
